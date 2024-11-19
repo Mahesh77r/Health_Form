@@ -18,6 +18,8 @@ const BasicInfo: React.FC = () => {
     gender: "",
   });
 
+  const [loading,setLoading] = useState<boolean>(false);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -35,11 +37,11 @@ const BasicInfo: React.FC = () => {
   
   const handleSubmit = async(e:any) => {
     e.preventDefault();
-    
+    setLoading(true);
     try {
       
       const headers ={}
-      let res = await createUserNew(formData,headers);
+      let res = await createUserNew(formData);
       console.log(res)
       if (res?.status === 200) {
         toast.success("BasicInfo Saved Successfully");
@@ -51,6 +53,7 @@ const BasicInfo: React.FC = () => {
       } else if (res?.status === 202) {
         toast.error(res.data.message);
       }
+      setLoading(false);
     } catch (error) {
       console.error('Error during BasicINfo:', error);
       toast.error('An error occurred during BasicInfo');
@@ -58,7 +61,6 @@ const BasicInfo: React.FC = () => {
 
     finally {
       console.log("dis")
-      // toast.dismiss(loadingToast);
     }
 
   };
@@ -140,7 +142,7 @@ const BasicInfo: React.FC = () => {
       </div>
 
       <Buttons
-        title="Save and Next"
+        title={loading ? 'loading...' : 'Save and Next'}
         onclickfunction={(e)=>handleSubmit(e)}
         className="w-full text-center hover:bg-[#4165c9] bg-[#345bc3] text-white"
       />

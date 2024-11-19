@@ -40,7 +40,7 @@ const handleError = (error: ApiError): void => {
 };
 
 // POST request to create a user
-export const createUserNew = async (data: any,id:string | null, ): Promise<ApiResponse<any>> => {
+export const createUserNew = async (data: any ): Promise<ApiResponse<any>> => {
   try {
     const endpoint = '/user/add';
     const response = await apiClient.post(endpoint, data, );
