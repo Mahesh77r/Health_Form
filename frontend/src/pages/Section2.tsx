@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Form from "../Components/Form.tsx";
 import { addLifestyleHabits} from '../services/apis.ts'
 import { toast } from 'react-hot-toast';
 import { useNavigate } from "react-router-dom";
 
 const Section2: React.FC = () => {
-
+  const [id,setId] = useState<string | null>('')
+  useEffect(()=>{
+    const userid = localStorage.getItem('id') ;
+    setId(userid);
+  },[])
   
   const questions = [
     {
@@ -63,7 +67,7 @@ const Section2: React.FC = () => {
 
     try {
       const headers ={}
-      let res = await addLifestyleHabits(data,headers);
+      let res = await addLifestyleHabits(data,id);
       console.log(res)
       if (res?.status === 200) {
         toast.success("Section2 Saved Successfully");

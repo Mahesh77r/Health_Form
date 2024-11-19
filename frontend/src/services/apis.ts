@@ -21,7 +21,6 @@ const getHeader = (): Record<string, string> => {
     Authorization: token || '',
   };
 };
-const id = localStorage.getItem('id');
 
 
 const apiClient: AxiosInstance = axios.create({
@@ -41,10 +40,10 @@ const handleError = (error: ApiError): void => {
 };
 
 // POST request to create a user
-export const createUserNew = async (data: any, headers: Record<string, string> = {}): Promise<ApiResponse<any>> => {
+export const createUserNew = async (data: any,id:string | null, ): Promise<ApiResponse<any>> => {
   try {
     const endpoint = '/user/add';
-    const response = await apiClient.post(endpoint, data, { headers });
+    const response = await apiClient.post(endpoint, data, );
     return response;
   } catch (error) {
     handleError(error as ApiError);
@@ -53,10 +52,10 @@ export const createUserNew = async (data: any, headers: Record<string, string> =
 };
 
 // PATCH request to update a user
-export const updateUser = async (data: any, headers: Record<string, string> = {}): Promise<ApiResponse<any>> => {
+export const updateUser = async (data: any,id:string | null, ): Promise<ApiResponse<any>> => {
   try {
     const endpoint = '/user/update';
-    const response = await apiClient.patch(endpoint, data, { headers });
+    const response = await apiClient.patch(endpoint, data, );
     return response;
   } catch (error) {
     handleError(error as ApiError);
@@ -65,10 +64,10 @@ export const updateUser = async (data: any, headers: Record<string, string> = {}
 };
 
 // POST request to add Lifestyle Habits
-export const addLifestyleHabits = async (data: any, headers: Record<string, string> = {}): Promise<ApiResponse<any>> => {
+export const addLifestyleHabits = async (data: any,id:string | null, ): Promise<ApiResponse<any>> => {
   try {
     const endpoint = `/lifehabits/add/${id}`;
-    const response = await apiClient.post(endpoint, data, { headers });
+    const response = await apiClient.post(endpoint, data, );
     return response;
   } catch (error) {
     handleError(error as ApiError);
@@ -77,10 +76,10 @@ export const addLifestyleHabits = async (data: any, headers: Record<string, stri
 };
 
 // PATCH request to update Lifestyle Habits
-export const updateLifestyleHabits = async (data: any, headers: Record<string, string> = {}): Promise<ApiResponse<any>> => {
+export const updateLifestyleHabits = async (data: any,id:string | null, ): Promise<ApiResponse<any>> => {
   try {
     const endpoint = '/lifehabits/update';
-    const response = await apiClient.patch(endpoint, data, { headers });
+    const response = await apiClient.patch(endpoint, data, );
     return response;
   } catch (error) {
     handleError(error as ApiError);
@@ -89,10 +88,10 @@ export const updateLifestyleHabits = async (data: any, headers: Record<string, s
 };
 
 // POST request to add Medical History
-export const addMedicalHistory = async (data: any, headers: Record<string, string> = {}): Promise<ApiResponse<any>> => {
+export const addMedicalHistory = async (data: any,id:string | null, ): Promise<ApiResponse<any>> => {
   try {
     const endpoint = `/medicalhistory/add/${id}`;
-    const response = await apiClient.post(endpoint, data, { headers });
+    const response = await apiClient.post(endpoint, data, );
     return response;
   } catch (error) {
     handleError(error as ApiError);
@@ -101,10 +100,10 @@ export const addMedicalHistory = async (data: any, headers: Record<string, strin
 };
 
 // PATCH request to update Medical History
-export const updateMedicalHistory = async (data: any, headers: Record<string, string> = {}): Promise<ApiResponse<any>> => {
+export const updateMedicalHistory = async (data: any,id:string | null, ): Promise<ApiResponse<any>> => {
   try {
     const endpoint = `/medicalhistory/update/${id}`;
-    const response = await apiClient.patch(endpoint, data, { headers });
+    const response = await apiClient.patch(endpoint, data, );
     return response;
   } catch (error) {
     handleError(error as ApiError);
@@ -113,10 +112,10 @@ export const updateMedicalHistory = async (data: any, headers: Record<string, st
 };
 
 // POST request to add Erection Issue
-export const addErectionIssue = async (data: any, headers: Record<string, string> = {}): Promise<ApiResponse<any>> => {
+export const addErectionIssue = async (data: any,id:string | null, ): Promise<ApiResponse<any>> => {
   try {
     const endpoint = `/erectionissue/add/${id}`;
-    const response = await apiClient.post(endpoint, data, { headers });
+    const response = await apiClient.post(endpoint, data, );
     return response;
   } catch (error) {
     handleError(error as ApiError);
@@ -125,10 +124,10 @@ export const addErectionIssue = async (data: any, headers: Record<string, string
 };
 
 // PATCH request to update Erection Issue
-export const updateErectionIssue = async (data: any, headers: Record<string, string> = {}): Promise<ApiResponse<any>> => {
+export const updateErectionIssue = async (data: any,id:string | null, ): Promise<ApiResponse<any>> => {
   try {
     const endpoint = '/erectionissue/update';
-    const response = await apiClient.patch(endpoint, data, { headers });
+    const response = await apiClient.patch(endpoint, data, );
     return response;
   } catch (error) {
     handleError(error as ApiError);
@@ -137,10 +136,10 @@ export const updateErectionIssue = async (data: any, headers: Record<string, str
 };
 
 // POST request to add Sexual Health Data
-export const addRelationshipSexualHealth = async (data: any, headers: Record<string, string> = {}): Promise<ApiResponse<any>> => {
+export const addRelationshipSexualHealth = async (data: any,id:string | null, ): Promise<ApiResponse<any>> => {
   try {
     const endpoint = `/sexualhealth/add/${id}`;
-    const response = await apiClient.post(endpoint, data, { headers });
+    const response = await apiClient.post(endpoint, data, );
     return response;
   } catch (error) {
     handleError(error as ApiError);
@@ -149,10 +148,10 @@ export const addRelationshipSexualHealth = async (data: any, headers: Record<str
 };
 
 // PATCH request to update Sexual Health Data
-export const updateRelationshipSexualHealth = async (data: any, headers: Record<string, string> = {}): Promise<ApiResponse<any>> => {
+export const updateRelationshipSexualHealth = async (data: any,id:string | null, ): Promise<ApiResponse<any>> => {
   try {
     const endpoint = `/sexualhealth/update/${id}`;
-    const response = await apiClient.patch(endpoint, data, { headers });
+    const response = await apiClient.patch(endpoint, data, );
     return response;
   } catch (error) {
     handleError(error as ApiError);
@@ -161,10 +160,10 @@ export const updateRelationshipSexualHealth = async (data: any, headers: Record<
 };
 
 // POST request to add Ejaculation Issue
-export const addEjaculationIssue = async (data: any, headers: Record<string, string> = {}): Promise<ApiResponse<any>> => {
+export const addEjaculationIssue = async (data: any,id:string | null, ): Promise<ApiResponse<any>> => {
   try {
     const endpoint = `/pme/add/${id}`;
-    const response = await apiClient.post(endpoint, data, { headers });
+    const response = await apiClient.post(endpoint, data, );
     return response;
   } catch (error) {
     handleError(error as ApiError);
@@ -173,10 +172,10 @@ export const addEjaculationIssue = async (data: any, headers: Record<string, str
 };
 
 // PATCH request to update Ejaculation Issue
-export const updateEjaculationIssue = async (data: any, headers: Record<string, string> = {}): Promise<ApiResponse<any>> => {
+export const updateEjaculationIssue = async (data: any,id:string | null, ): Promise<ApiResponse<any>> => {
   try {
     const endpoint = `/pme/update/${id}`;
-    const response = await apiClient.patch(endpoint, data, { headers });
+    const response = await apiClient.patch(endpoint, data, );
     return response;
   } catch (error) {
     handleError(error as ApiError);
@@ -185,10 +184,10 @@ export const updateEjaculationIssue = async (data: any, headers: Record<string, 
 };
 
 // POST request to add Stress Survey
-export const addStressSurvey = async (data: any, headers: Record<string, string> = {}): Promise<ApiResponse<any>> => {
+export const addStressSurvey = async (data: any,id:string | null , ): Promise<ApiResponse<any>> => {
   try {
     const endpoint = `/stresssurvery/add/${id}`;
-    const response = await apiClient.post(endpoint, data, { headers });
+    const response = await apiClient.post(endpoint, data, );
     return response;
   } catch (error) {
     handleError(error as ApiError);
@@ -197,17 +196,17 @@ export const addStressSurvey = async (data: any, headers: Record<string, string>
 };
 
 // PATCH request to update Stress Survey
-export const updateStressSurvey = async (data: any, headers: Record<string, string> = {}): Promise<ApiResponse<any>> => {
+export const updateStressSurvey = async (data: any,id:string | null, ): Promise<ApiResponse<any>> => {
   try {
     const endpoint = `/stresssurvery/update/${id}`;
-    const response = await apiClient.patch(endpoint, data, { headers });
+    const response = await apiClient.patch(endpoint, data, );
     return response;
   } catch (error) {
     handleError(error as ApiError);
     return undefined;
   }
 };
-export const getSummary = async (): Promise<ApiResponse<any>> => {
+export const getSummary = async (id:string | null): Promise<ApiResponse<any>> => {
   try {
     const endpoint = `/getsummary/${id}`;
     const response = await apiClient.get(endpoint);

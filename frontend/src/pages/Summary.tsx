@@ -69,6 +69,12 @@ interface PatientData {
   const Summary: React.FC = () => {
     const navigate = useNavigate();
 
+    const [id,setId] = useState<string | null>('')
+    useEffect(()=>{
+      const userid = localStorage.getItem('id') ;
+      setId(userid);
+    },[])
+
     const handleback = () =>{
         navigate('/');
     }
@@ -86,7 +92,7 @@ interface PatientData {
   
     const getSummaryData = async () => {
       try {
-        const res = await getSummary();
+        const res = await getSummary(id);
         const data = res?.data;
         console.log(res?.data)
         if (data) {

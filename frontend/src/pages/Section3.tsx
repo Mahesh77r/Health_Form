@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import Form from '../Components/Form.tsx';
 
 import { addMedicalHistory} from '../services/apis.ts'
@@ -6,6 +6,11 @@ import { toast } from 'react-hot-toast';
 import { useNavigate } from "react-router-dom";
 
 const Section3:React.FC = () => {
+  const [id,setId] = useState<string | null>('')
+  useEffect(()=>{
+    const userid = localStorage.getItem('id') ;
+    setId(userid);
+  },[])
     const questions = [
         {
           id: 1,
@@ -51,7 +56,7 @@ const Section3:React.FC = () => {
     
         try {
           const headers ={}
-          let res = await addMedicalHistory(data,headers);
+          let res = await addMedicalHistory(data,id);
           console.log(res)
           if (res?.status === 200) {
             toast.success("Section2 Saved Successfully");

@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import Form from "../Components/Form.tsx";
 
 import { addEjaculationIssue } from '../services/apis.ts'
@@ -69,7 +69,11 @@ const Section7: React.FC = () => {
       condition: { questionId: 5, answer: "yes" }
     }
   ];
-  
+  const [id,setId] = useState<string | null>('')
+  useEffect(()=>{
+    const userid = localStorage.getItem('id') ;
+    setId(userid);
+  },[])
 
   const navigate = useNavigate();
 
@@ -79,7 +83,7 @@ const Section7: React.FC = () => {
 
     try {
       const headers ={}
-      let res = await addEjaculationIssue(data,headers);
+      let res = await addEjaculationIssue(data,id);
       console.log(res)
       if (res?.status === 200) {
         toast.success("Section2 Saved Successfully");
