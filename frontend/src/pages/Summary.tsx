@@ -70,7 +70,7 @@ const Summary: React.FC = () => {
 
   const [id, setId] = useState<string | null>("");
   useEffect(() => {
-    const userid = localStorage.getItem("id");
+    const userid = localStorage.getItem('id');
     setId(userid);
   }, []);
 
