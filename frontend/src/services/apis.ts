@@ -198,6 +198,7 @@ export const addStressSurvey = async (data: any,id:string | null , ): Promise<Ap
 // PATCH request to update Stress Survey
 export const updateStressSurvey = async (data: any,id:string | null, ): Promise<ApiResponse<any>> => {
   try {
+    console.log(id)
     const endpoint = `/stresssurvery/update/${id}`;
     const response = await apiClient.patch(endpoint, data, );
     return response;
