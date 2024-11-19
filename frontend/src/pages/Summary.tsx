@@ -70,6 +70,7 @@ const Summary: React.FC = () => {
 
   const [id, setId] = useState<string | null>("");
   useEffect(() => {
+    console.log(localStorage.getItem('id'))
     const userid = localStorage.getItem('id');
     setId(userid);
   }, []);
@@ -99,8 +100,8 @@ const Summary: React.FC = () => {
   const getSummaryData = async () => {
     try {
       console.log(id);
-
-      const res = await getSummary(id);
+      const user_id = id || localStorage.getItem('id');
+      const res = await getSummary(user_id);
       const data = res?.data;
       console.log(res?.data);
       if (data) {
