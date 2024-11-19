@@ -142,7 +142,7 @@ const BasicInfo: React.FC = () => {
       </div>
 
       <Buttons
-        title={loading ? 'loading...' : 'Save and Next'}
+        title={loading ? 'Loading...' : 'Save and Next'}
         onclickfunction={(e)=>handleSubmit(e)}
         className="w-full text-center hover:bg-[#4165c9] bg-[#345bc3] text-white"
       />

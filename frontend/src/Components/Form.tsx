@@ -30,6 +30,8 @@ const Form: React.FC<FormProps> = ({ questions, submitHandler }) => {
   const [formData, setFormData] = useState<Record<string, string | number | string[]>>({});
   const [progress, setProgress] = useState<number>(0);
   const [error, setError] = useState<string>("");
+  const [loading,setLoading] = useState<boolean>(false);
+
 
   const isQuestionVisible = (question: Question): boolean => {
     if (!question.condition) return true;
@@ -109,7 +111,8 @@ const Form: React.FC<FormProps> = ({ questions, submitHandler }) => {
   const submitData = async (e: any) => {
     try {
       e.preventDefault();
-
+      setLoading(true)
+      
       // Validation for the last question
       const currentQuestionField = `question_${questions[currentQuestion].id}`;
       const currentQuestionValue = formData[currentQuestionField];
@@ -120,9 +123,10 @@ const Form: React.FC<FormProps> = ({ questions, submitHandler }) => {
         setError("Please select an option or fill the input.");
         return;
       }
-
+      
       console.log(formData);
-      submitHandler(e, formData);
+      await  submitHandler(e, formData);
+      setLoading(false)
     } catch (error) {
       console.log("Error In Form Components");
     }
@@ -134,7 +138,7 @@ const Form: React.FC<FormProps> = ({ questions, submitHandler }) => {
         title="Back"
         onclickfunction={handleBack}
         className="button-back"
-        disabled={currentQuestion === 0 ? "true" : undefined}
+        disabled={currentQuestion === 0 ? true : false}
         icon={BackIcon}
       />
 
@@ -204,7 +208,7 @@ const Form: React.FC<FormProps> = ({ questions, submitHandler }) => {
       {error && <p className="error-message">{error}</p>}
 
       <Buttons
-        title={currentQuestion === questions.length - 1 ? "Finish" : "Next"}
+        title={ loading ? 'Loading...' : (currentQuestion === questions.length - 1 ? "Finish" : "Next")} 
         onclickfunction={(e) => {
           if (currentQuestion === questions.length - 1) {
             submitData(e);
@@ -213,7 +217,7 @@ const Form: React.FC<FormProps> = ({ questions, submitHandler }) => {
           }
         }}
         className="button-next"
-        disabled={undefined}
+        disabled={ loading ? true : false}
         icon={NextIcon}
       />
     </div>
