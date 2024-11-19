@@ -1,0 +1,89 @@
+.form-container {
+  padding: 32px;
+  max-width: 720px;
+  margin: 0 auto;
+  font-size: 18px;
+}
+
+.button-back {
+  margin-bottom: 16px;
+  background-color: white;
+  border: none;
+  color: black;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+.progress-bar {
+  position: relative;
+  width: 100%;
+  height: 10px;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  margin-top: 16px;
+}
+
+.progress {
+  position: absolute;
+  height: 10px;
+  background-color: #4caf50;
+  border-radius: 5px;
+}
+
+.question-container {
+  margin-top: 16px;
+}
+
+.question-label {
+  display: block;
+  font-weight: 500;
+  color: #333333;
+}
+
+.options-container {
+  margin-top: 8px;
+}
+
+.option-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.input-option {
+  margin-right: 8px;
+}
+
+.option-label {
+  color: #333333;
+}
+
+.input-field,
+.input-followup {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  margin-top: 8px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.error-message {
+  color: #ff0000;
+  margin-top: 8px;
+}
+
+.button-next {
+  margin-top: 16px;
+  background-color: #345bc3;
+  color: white;
+  cursor: pointer;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+}
+
+.button-next:hover {
+  background-color: #4165c9;
+}
